@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"net/http"
+	"sync/atomic"
 
 	"context"
 	"math"
@@ -119,7 +120,7 @@ type MetricInterface interface {
 
 type CounterMetric struct {
 	namespace string
-	value     int
+	value     int64
 }
 
 func NewCounterMetric(namespace string) *CounterMetric {
@@ -131,19 +132,19 @@ func NewCounterMetric(namespace string) *CounterMetric {
 }
 
 func (c *CounterMetric) Increment() {
-	c.value++
+	atomic.StoreInt64(&c.value, c.value+1)
 }
 
 func (c *CounterMetric) Decrement() {
-	c.value--
+	atomic.StoreInt64(&c.value, c.value-1)
 }
 
-func (c *CounterMetric) SetValue(value int) {
-	c.value = value
+func (c *CounterMetric) SetValue(value int64) {
+	atomic.StoreInt64(&c.value, value)
 }
 
 func (c *CounterMetric) Envelope() envelope {
-	return envelope{c.namespace: c.value}
+	return envelope{c.namespace: atomic.LoadInt64(&c.value)}
 
 }
 
