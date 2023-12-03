@@ -132,11 +132,11 @@ func NewCounterMetric(namespace string) *CounterMetric {
 }
 
 func (c *CounterMetric) Increment() {
-	atomic.StoreInt64(&c.value, c.value+1)
+	atomic.AddInt64(&c.value, 1)
 }
 
 func (c *CounterMetric) Decrement() {
-	atomic.StoreInt64(&c.value, c.value-1)
+	atomic.AddInt64(&c.value, -1)
 }
 
 func (c *CounterMetric) SetValue(value int64) {
