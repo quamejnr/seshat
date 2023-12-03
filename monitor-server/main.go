@@ -19,15 +19,15 @@ import (
 	"encoding/json"
 )
 
-var latency = NewMapMetric("LatencyMetrics")
-var requestCounter = NewCounterMetric("requestCounter")
+var l = NewMapMetric("LatencyMetrics")
+var c = NewCounterMetric("requestCounter")
 
 func recordRequests() {
-	requestCounter.Increment()
+	c.Increment()
 }
 
 func recordLatency(url string, responseTime float32) {
-	latency.SetKeyValue(url, responseTime)
+	l.SetKeyValue(url, responseTime)
 }
 
 type monitorService struct {
