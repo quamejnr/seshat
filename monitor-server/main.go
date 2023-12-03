@@ -56,7 +56,7 @@ func (s *monitorService) GetLatency(ctx context.Context, req *monitorpb.GetLaten
 	if math.IsNaN(float64(avgElapsedTimeMs)) {
 		avgElapsedTimeMs = 0
 	}
-	return &monitorpb.GetLatencyResponse{Latency: avgElapsedTimeMs}, nil
+	return &monitorpb.GetLatencyResponse{RequestLatencyMs: avgElapsedTimeMs}, nil
 }
 
 func main() {

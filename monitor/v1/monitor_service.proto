@@ -14,5 +14,5 @@ message GetLatencyRequest {
 }
 
 message GetLatencyResponse { 
-  float latency = 1; 
+  float request_latency_ms = 1; 
 }
