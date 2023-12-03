@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package monitor.v1; 
+
+option go_package = "github.com/quamejnr/seshat/gen/monitor/v1";
+
+service MonitorService {
+  rpc GetLatency(GetLatencyRequest) returns (GetLatencyResponse) {};
+}
+
+message GetLatencyRequest {
+  string url = 1;
+  int32 num_of_requests = 2;
+}
+
+message GetLatencyResponse { 
+  float latency = 1; 
+}
