@@ -41,13 +41,13 @@ var l = NewMapMetric("LatencyMetrics")
 
 2. You can then write your own function and use this instance created.
    Currently, `MapMetric` has only one method
-   `SetKeyValue(key string, value any)`. For example;
+   `SetLabelValue(label string, value any)`. For example;
 
 ```go
 var l = NewMapMetric("LatencyMetrics")
 
 func recordLatency(url string, responseTime float32) {
-    l.SetKeyValue(url, responseTime)
+    l.SetLabelValue(url, responseTime)
 }
 ```
 
@@ -66,7 +66,7 @@ var c = NewCounterMetric{"requestCounter"}
 ```
 
 2. You can write your own function leveraging the methods from the instance
-   created. Currently, `CounterMetric` has 3 methods; `SetKey`, `Increment`,
+   created. Currently, `CounterMetric` has 3 methods; `SetValue`, `Increment`,
    `Decrement`.
 
 ```go
