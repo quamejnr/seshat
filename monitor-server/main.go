@@ -28,7 +28,7 @@ func recordRequests() {
 }
 
 func recordLatency(url string, responseTime float32) {
-	l.SetKeyValue(url, responseTime)
+	l.SetLabelValue(url, responseTime)
 }
 
 type monitorService struct {
@@ -162,8 +162,8 @@ func NewMapMetric(namespace string) *MapMetric {
 	return res
 }
 
-func (m *MapMetric) SetKeyValue(key string, value any) {
-	m.value[key] = value
+func (m *MapMetric) SetLabelValue(label string, value any) {
+	m.value[label] = value
 }
 
 func (m *MapMetric) Envelope() envelope {
