@@ -1,12 +1,12 @@
 # Seshat
 
-A gRPC server that keeps metrics of your services.
+A gRPC server that keeps metrics of your services like Prometheus
 
 ## Motivation
 
 I built Seshat in an attempt to deapen my understanding of gRPC although it
 currently has the potential to be a library independent of gRPC. The idea of
-Seshat is to help you easily create metrics for your services. You can easily
+Seshat is to help you easily create metrics for your services like Prometheus does. You can easily
 configure your gRPC server to send ping all your services and keep records of
 the latency for later analysis.
 
